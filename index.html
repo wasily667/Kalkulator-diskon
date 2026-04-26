@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diskon App</title>
+
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#22c55e">
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.box {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 15px;
+  width: 300px;
+  text-align: center;
+}
+input, button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 8px;
+  border: none;
+}
+button {
+  background: #22c55e;
+  color: white;
+}
+</style>
+
+</head>
+<body>
+
+<div class="box">
+  <h2>💸 Diskon App</h2>
+  <input type="number" id="harga" placeholder="Harga">
+  <input type="number" id="diskon" placeholder="Diskon %">
+  <button onclick="hitung()">Hitung</button>
+  <p id="hasil"></p>
+</div>
+
+<script>
+function hitung() {
+  let h = harga.value;
+  let d = diskon.value;
+
+  let pot = (h * d) / 100;
+  let total = h - pot;
+
+  hasil.innerHTML = "Rp " + total.toLocaleString();
+}
+
+// REGISTER SERVICE WORKER
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("sw.js");
+}
+</script>
+
+</body>
+</html>
